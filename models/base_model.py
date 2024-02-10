@@ -14,11 +14,11 @@ class BaseModel:
         self.created_at = datetime.today()
         self.updated_at = datetime.today()
         if len(kwargs) != 0:
-            for k, v in kwargs.iems():
+            for k, v in kwargs.items():
                 if k == "created_at" or k == "updated_at":
                     """here we prais the time  (today) to be in 
                     time_format"""
-                    self.__dict__[k] = datatime.strptime(v, time_format)
+                    self.__dict__[k] = datetime.strptime(v, time_format)
                 else:
                     self.__dict__[k] = v
         """else:
