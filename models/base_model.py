@@ -1,4 +1,6 @@
-import cmd
+#!/usr/bin/python3
+"""Defines the BaseModel class."""
+import models
 from uuid import uuid4
 from datetime import datetime
 
@@ -21,13 +23,14 @@ class BaseModel:
                     self.__dict__[k] = datetime.strptime(v, time_format)
                 else:
                     self.__dict__[k] = v
-        """else:
-            models.storage.new(self)"""
+        else:
+            models.storage.new(self)
 
     def save(self):
         """ updates the public instance attribute
         updated_at with the current datetime"""
         self.updated_at = datetime.today()
+        models.sotrge.save()
 
     def to_dict(self):
         """returns a dictionary containing all 
